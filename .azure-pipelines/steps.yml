@@ -1,3 +1,8 @@
+parameters:
+  - name: setPython
+    type: boolean
+    default: true
+
 steps:
   - checkout: self
     persistCredentials: true
@@ -5,9 +10,10 @@ steps:
   - task: UsePythonVersion@0 
     inputs:
       versionSpec: '3.7'
+    condition: ${{ parameters.setPython }}
 
   - script: |
-      python -m pip install conan
+      python3 -m pip install conan
     displayName: 'Install Conan'
   
 

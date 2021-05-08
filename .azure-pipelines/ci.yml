@@ -32,6 +32,8 @@ jobs:
 
   steps:
     - template: ./steps.yml
+      parameters:
+        setPython: false
 
 
 - job: Windows_Package

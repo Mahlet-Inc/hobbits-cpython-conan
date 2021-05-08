@@ -36,6 +36,7 @@ class HobbitsCpythonConan(ConanFile):
 
         url = f"https://dev.azure.com/mahlet-inc/hobbits/_apis/build/builds/{build_id}/artifacts?artifactName={artifact_name}&api-version=5.1&%24format=zip"
         tools.get(url, filename="python_binaries", strip_root=True)
+        print(f"Current dir: {os.listdir()}")
         tools.unzip(f"{artifact_name}.tgz")
 
     def package(self):
