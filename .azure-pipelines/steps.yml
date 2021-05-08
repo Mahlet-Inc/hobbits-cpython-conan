@@ -13,7 +13,7 @@ steps:
     condition: ${{ parameters.setPython }}
 
   - script: |
-      python3 -m ensurepip
+      sudo python3 -m ensurepip
     displayName: 'Ensure pip is installed'
 
   - script: |
