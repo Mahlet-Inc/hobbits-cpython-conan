@@ -13,8 +13,9 @@ steps:
     condition: ${{ parameters.setPython }}
 
   - script: |
-      sudo python3 -m ensurepip
-    displayName: 'Ensure pip is installed'
+      yum install python3-pip
+    displayName: 'Install pip'
+    condition: not( ${{ parameters.setPython }} )
 
   - script: |
       python3 -m pip install conan
