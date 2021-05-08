@@ -13,13 +13,9 @@ steps:
     condition: ${{ parameters.setPython }}
 
   - script: |
-      yum install python3-pip
-    displayName: 'Install pip'
-    condition: not( ${{ parameters.setPython }} )
-
-  - script: |
       python3 -m pip install conan
     displayName: 'Install Conan'
+    condition: ${{ parameters.setPython }}
   
 
   - script: |
