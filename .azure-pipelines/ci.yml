@@ -1,0 +1,43 @@
+trigger:
+  - master
+
+- job: macOS_Package
+  displayName: macOS Package
+
+  pool:
+    vmImage: macos-10.14
+
+  steps:
+  - template: ./steps.yml
+
+
+- job: Ubuntu_Package
+  displayName: Ubuntu Package
+
+  pool:
+    vmImage: ubuntu-18.04
+
+  steps:
+  - template: ./steps.yml
+
+
+- job: CentOS_Package
+  displayName: CentOS Package
+
+  pool:
+    vmImage: 'ubuntu-18.04'
+
+  container: helloadam/hobbitscentosbuilder:latest
+
+  steps:
+    - template: ./steps.yml
+
+
+- job: Windows_Package
+  displayName: Windows Package
+
+  pool:
+    vmImage: windows-2019
+
+  steps:
+  - template: ./steps.yml

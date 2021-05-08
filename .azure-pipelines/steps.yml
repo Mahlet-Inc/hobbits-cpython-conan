@@ -1,0 +1,17 @@
+steps:
+  - checkout: self
+    persistCredentials: true
+
+  - task: UsePythonVersion@0 
+    inputs:
+      versionSpec: '3.7'
+
+  - script: |
+      python -m pip install conan
+    displayName: 'Install Conan'
+  
+
+  - script: |
+      cd $(Build.SourcesDirectory)
+      conan create .
+    displayName: 'Create Conan Package'
