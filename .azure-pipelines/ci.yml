@@ -1,6 +1,7 @@
 trigger:
   - master
 
+jobs:
 - job: macOS_Package
   displayName: macOS Package
 
