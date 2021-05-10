@@ -12,18 +12,18 @@ steps:
       versionSpec: '3.7'
     condition: ${{ parameters.setPython }}
 
-  - script: |
+  - bash: |
       python3 -m pip install conan
     displayName: 'Install Conan'
     condition: ${{ parameters.setPython }}
   
 
-  - script: |
+  - bash: |
       cd $(Build.SourcesDirectory)
       conan create .
     displayName: 'Create Conan Package'
   
-  - script: |
+  - bash: |
       cd $(Build.SourcesDirectory)
       conan remote add myconan https://helloadam.jfrog.io/artifactory/api/conan/conan
       conan user -p $CONAN_API_KEY -r myconan adam@smr.llc
