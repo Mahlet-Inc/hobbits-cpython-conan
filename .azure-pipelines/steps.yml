@@ -22,3 +22,12 @@ steps:
       cd $(Build.SourcesDirectory)
       conan create .
     displayName: 'Create Conan Package'
+  
+  - script: |
+      cd $(Build.SourcesDirectory)
+      conan remote add myconan https://helloadam.jfrog.io/artifactory/api/conan/conan
+      conan user -p $CONAN_API_KEY -r myconan adam@smr.llc
+      conan upload hobbits-cpython/3.9.1 --all --remote myconan
+    env:
+      CONAN_API_KEY: $(CONAN_API_KEY)
+    displayName: 'Upload Conan Package'
