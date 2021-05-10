@@ -20,6 +20,7 @@ steps:
 
   - bash: |
       cd $(Build.SourcesDirectory)
+      conan config set general.keep_python_files=True
       conan create .
     displayName: 'Create Conan Package'
   
